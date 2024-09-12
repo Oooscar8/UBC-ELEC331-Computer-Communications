@@ -1,8 +1,8 @@
 [toc]
 
-# Lecture Notes
+# Notes
 
-This file mainly consists of my Lecture Notes of UBC ELEC331 Computer Communications and my reading of the textbook *<u>COMPUTER NETWORKING A Top-Down Approach</u>*
+This file mainly consists of my Notes of UBC ELEC331 Computer Communications, my reading of the textbook *<u>COMPUTER NETWORKING A Top-Down Approach</u>* and its corresponding lectures.
 
 
 
@@ -64,8 +64,6 @@ End systems, packet switches, and other pieces of the Internet run protocols tha
 
 * TCP/IP
 
----
-
 
 
 ### A services Description
@@ -82,8 +80,6 @@ The Internet is an infrastructure that provides services to **distributed applic
 
 Socket interface is a set of rules that the sending program must follow so that the data can be delivered to destination program.
 
----
-
 
 
 ### What is a Protocol?
@@ -99,8 +95,6 @@ Socket interface is a set of rules that the sending program must follow so that 
 #### Network Protocols
 
 A protocol defines the **format** and the **order** of messages exchanged between two or more communicating entities, as well as the **actions** taken on the transmission and/or receipt of a message or other event.
-
----
 
 
 
@@ -140,11 +134,13 @@ Data and telephone signals are encoded at different frequencies.
 
 * DSLAM
 
-On the  telco side, DSLAM separates the data and phone signals and sends the data into the Internet.
+On the telco side, DSLAM separates the data and phone signals and sends the data into the Internet.
 
 * Splitter
 
 On the customer side, a splitter separates the data and telephone signals arriving to the home and forwards the data signal to the DSL modem.
+
+Asymmetric: downstream transmission rate is larger than upstream transmission rate
 
 ---
 
@@ -155,6 +151,10 @@ On the customer side, a splitter separates the data and telephone signals arrivi
 <img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409041509538.png" alt="image-20240904150914348" style="zoom:50%;" />
 
 <img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409041510599.png" alt="image-20240904151059445" style="zoom:50%;" />
+
+Frequency division multiplexing(FDM): different channels transmitted in different frequency bands
+
+Asymmetric: downstream transmission rate is larger than upstream transmission rate
 
 CMTS‘s function is similar to DSLAM
 
@@ -197,6 +197,16 @@ without installing costly and failure-prone cabling
 #### Wide-Area Wireless Access: 3G and LTE 4G and 5G
 
 Employ the same wireless infrastructure used for cellular telephony to send/receive packets through a base station that is operated by the cellular network provider.
+
+
+
+### Packets
+
+R: transmission rate
+
+L: length of a packet
+
+![image-20240912131136591](https://gitee.com/OooAlex/study_note/raw/master/img/202409121311655.png)
 
 
 
