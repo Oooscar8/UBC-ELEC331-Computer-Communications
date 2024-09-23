@@ -200,16 +200,6 @@ Employ the same wireless infrastructure used for cellular telephony to send/rece
 
 
 
-### Packets
-
-R: transmission rate
-
-L: length of a packet
-
-![image-20240912131136591](https://gitee.com/OooAlex/study_note/raw/master/img/202409121311655.png)
-
-
-
 ### Physical Media
 
 guided media / unguided media.
@@ -226,7 +216,7 @@ Coaxial cable can be used as a guided shared medium
 
 * Terrestrial Radio Channels
 
-Require no physical wire to be installed, can penetrate  walls, provide connectivity to a mobile user, and can potentially carry a signal for long distances.
+Require no physical wire to be installed, can penetrate walls, provide connectivity to a mobile user, and can potentially carry a signal for long distances.
 
 * Satellite Radio Channels
 
@@ -236,3 +226,105 @@ Require no physical wire to be installed, can penetrate  walls, provide connecti
 
 
 
+### Packet Switching
+
+R: transmission rate (bps)
+
+L: length of a packet
+
+**transmission delay**:
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409121311655.png" alt="image-20240912131136591" style="zoom:50%;" />
+
+  
+
+#### Store-and Forward Transmission
+
+it takes 2L/R(time) for a packet to be sent from Source to Destination
+
+it takes 4L/R(time) for all three packets to be sent from Source to Destination
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409121419327.png" alt="image-20240912141943199" style="zoom: 67%;" />
+
+More general form: N links each of rate R
+
+**end-to-end delay**:
+
+![image-20240912142622318](https://gitee.com/OooAlex/study_note/raw/master/img/202409121426382.png)
+
+
+
+#### Queuing Delays and Packet Loss
+
+**output buffer** (**output queue**): the arriving packet **wait** here
+
+result in output buffer **queuing delays**
+
+if the output buffer is full, **packet loss** occurs
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409121445872.png" alt="image-20240912144530808" style="zoom:67%;" />
+
+
+
+#### Forwarding Tables and Routing Protocols
+
+> How do forwarding tables get set?
+
+The Internet has a number of special **routing protocols** that are used to **automatically** set the forwarding tables
+
+
+
+###  Circuit Switching
+
+When two hosts want to communicate, the network establishes **a dedicated end-to-end connection.**
+
+> Why is circuit switching less efficient than packet switching?
+
+Circuit switching pre-allocates use of the transmission link  regardless of demand, with allocated but unneeded link time going unused
+
+Packet  switching allocates link use on demand
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409221640398.png" alt="image-20240922164045198" style="zoom:50%;" />
+
+
+
+### Internet is a "network of networks"!
+
+Interconnection of ISPs:
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409221614053.png" alt="image-20240922161449805" style="zoom: 25%;" />
+
+
+
+## Delay, Loss, and Throughput in Packet-Switched Networks
+
+four delays:
+
+* transmission delay: time to **push** the entire packet onto the link
+* processing delay
+* propagation delay
+* queueing delay -> congestion and packet loss
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409221917593.png" alt="image-20240922191750407" style="zoom: 33%;" />
+
+
+
+Throughput:
+
+analogy to pipes
+
+rate(bits/time unit) at which bits are being sent from sender to receiver
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409221937913.png" alt="image-20240922193702630" style="zoom:25%;" />
+
+
+
+## Layering, encapsulation, service models
+
+Layering and encapsulation:
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409222317594.png" alt="image-20240922231747247" style="zoom:40%;" />
+
+The switches and routers only implement the lower layer of the protocol stack:
+
+<img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409222320192.png" alt="image-20240922232032878" style="zoom:40%;" />
