@@ -57,15 +57,31 @@ Assume file size F = N(bytes)
 
 $ 1024 * 2 + N < N/1000 * 1024$
 
-Therefore, file size F should be at least 43kB(kilobytes).
+Therefore, file size F should be at least 85333B.
 
 <img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409230146444.jpg" alt="de31089cb8d71a4727deaf00b3215c3" style="zoom:50%;" />
 
 > (b) For what file size F (in bytes) is the total delay incurred before the entire file arrives at the destination by using circuit switching to be lower than the total delay incurred by using packet switching?
 
+* My solution:
+
 As shown below, file size F should be at least 139KB.
 
 <img src="https://gitee.com/OooAlex/study_note/raw/master/img/202409230208176.jpg" alt="9f2318c1c713602e404061eb2ada90a" style="zoom:50%;" />
+
+* Correct solution:
+
+![image-20240925232305805](https://gitee.com/OooAlex/study_note/raw/master/img/202409252323890.png)
+
+Total transmission delay for packet switching:
+
+$d_{trans}=(N+P-1)\frac{L}{R}$
+
+N is the number of links;
+
+P is the number of packets;
+
+L is the length per packet.  
 
 
 
@@ -75,99 +91,7 @@ As shown below, file size F should be at least 139KB.
 
 > P18. Perform a Traceroute between source and destination on the same continent  at three different hours of the day. 
 
-```
-root@LAPTOP-D6H0EK35:/mnt/c/Users/s1590# traceroute google.com
-traceroute to google.com (142.250.217.110), 30 hops max, 60 byte packets
- 1  LAPTOP-D6H0EK35.mshome.net (172.21.0.1)  0.324 ms  0.301 ms  0.336 ms
- 2  172.20.10.1 (172.20.10.1)  5.492 ms  2.821 ms  5.480 ms
- 3  * * *
- 4  * * *
-...
-root@LAPTOP-D6H0EK35:/mnt/c/Users/s1590# traceroute google.com
-traceroute to google.com (142.250.217.110), 30 hops max, 60 byte packets
- 1  LAPTOP-D6H0EK35.mshome.net (172.21.0.1)  0.307 ms  0.254 ms  0.247 ms
- 2  172.20.10.1 (172.20.10.1)  2.848 ms  4.357 ms  3.032 ms
- 3  * * *
- 4  * * *
-...
-root@LAPTOP-D6H0EK35:/mnt/c/Users/s1590# traceroute google.com
-traceroute to google.com (142.251.33.110), 30 hops max, 60 byte packets
- 1  LAPTOP-D6H0EK35.mshome.net (172.21.0.1)  0.267 ms  0.274 ms  0.318 ms
- 2  172.20.10.1 (172.20.10.1)  5.737 ms  4.140 ms  2.676 ms
- 3  * * *
- 4  * * *
- ...
-```
-
-> a. Find the average and standard deviation of the round-trip delays at each of  the three hours. 
-
-Hop1:
-
-| Run  | Average (ms) | Standard Deviation (ms) |
-| ---- | ------------ | ----------------------- |
-| 1    | 0.320        | 0.017                   |
-| 2    | 0.269        | 0.030                   |
-| 3    | 0.286        | 0.026                   |
-
-Hop2:
-
-| Run  | Average (ms) | Standard Deviation (ms) |
-| ---- | ------------ | ----------------------- |
-| 1    | 4.264        | 1.379                   |
-| 2    | 3.412        | 0.751                   |
-| 3    | 4.184        | 1.411                   |
-
-> b. Find the number of routers in the path at each of the three hours. Did the paths change during any of the hours? 
-
-| Run  | Number of Routers | Path Description        |
-| ---- | ----------------- | ----------------------- |
-| 1    | 2                 | 172.21.0.1, 172.20.10.1 |
-| 2    | 2                 | 172.21.0.1, 172.20.10.1 |
-| 3    | 2                 | 172.21.0.1, 172.20.10.1 |
-
-The paths remained the same across all three runs. Each run had the same two routers successfully responding.
-
-> c. Try to identify the number of ISP networks that the Traceroute packets pass through from source to destination. Routers with similar names and/or similar IP addresses should be considered as part of the same ISP. In your experiments, do the largest delays occur at the peering interfaces between adjacent ISPs? 
-
-2 ISP networks
-
-Yes, the largest delays occur at the peering interfaces between adjacent ISPs.
-
-> d. Repeat the above for a source and destination on different continents.  Compare the intra-continent and inter-continent results
-
-inter-continent results:
-
-```
-root@LAPTOP-D6H0EK35:/mnt/c/Users/s1590# traceroute 4Web.ca
-traceroute to 4Web.ca (199.96.31.141), 30 hops max, 60 byte packets
- 1  LAPTOP-D6H0EK35.mshome.net (172.21.0.1)  0.679 ms  0.541 ms  0.410 ms
- 2  * 172.20.10.1 (172.20.10.1)  2.445 ms *
- 3  * * *
- 4  * * *
-...
-root@LAPTOP-D6H0EK35:/mnt/c/Users/s1590# traceroute 4Web.ca
-traceroute to 4Web.ca (199.96.31.141), 30 hops max, 60 byte packets
- 1  LAPTOP-D6H0EK35.mshome.net (172.21.0.1)  0.443 ms  0.427 ms  0.423 ms
- 2  172.20.10.1 (172.20.10.1)  4.876 ms  3.871 ms  4.867 ms
- 3  * * *
- 4  * * *
-...
-root@LAPTOP-D6H0EK35:/mnt/c/Users/s1590# traceroute 4Web.ca
-traceroute to 4Web.ca (199.96.31.141), 30 hops max, 60 byte packets
- 1  LAPTOP-D6H0EK35.mshome.net (172.21.0.1)  0.312 ms  0.295 ms  0.252 ms
- 2  172.20.10.1 (172.20.10.1)  5.095 ms  5.089 ms  5.555 ms
- 3  * * *
- 4  * * *
-...
-```
-
-Route Delay Results Table:
-
-| Hop Number | Average RTT (ms)  | Standard Deviation (ms) |
-| ---------- | ----------------- | ----------------------- |
-| Hop 1      | 0.41967           | 0.12345                 |
-| Hop 2      | 4.23467           | 0.56789                 |
-| Hop 3      | Request Timed Out | -                       |
+See the PS1 Official Solutions.
 
 
 
@@ -185,5 +109,5 @@ Route Delay Results Table:
 
 2. On average, how many times will the server re-transmit the packet in order for the client to successfully receive the packet?
 
-   $\frac{1}{(1-p)^N}$
+   $\frac{1}{(1-p)^N} - 1$
 
